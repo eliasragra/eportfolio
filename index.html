@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>E-portfolio de Ragragui Elias</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3f5f9;--surface:#fff;--ink:#12203a;--muted:#55607a;--line:#d3dae6;
+  --hero:#12203a;--hero-ink:#f3f5f9;--accent:#1d4e89;--brass:#b8924a;--soft:#e8edf5;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#0c1220;--surface:#141d31;--ink:#e8ecf5;--muted:#9ba6bf;--line:#26324d;--hero:#09101c;--hero-ink:#e8ecf5;--accent:#8db4ea;--brass:#d2aa62;--soft:#1b2640}
+}
+:root[data-theme="dark"]{--bg:#0c1220;--surface:#141d31;--ink:#e8ecf5;--muted:#9ba6bf;--line:#26324d;--hero:#09101c;--hero-ink:#e8ecf5;--accent:#8db4ea;--brass:#d2aa62;--soft:#1b2640}
+html{scroll-padding-top:calc(64px + env(safe-area-inset-top,0px))}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:1.0625rem;line-height:1.65}
+h1,h2,h3{font-family:Sora,"Segoe UI",system-ui,sans-serif;line-height:1.2;margin:0}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+
+/* Navigation */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--surface);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:56px}
+.brand{color:inherit;text-decoration:none;font-family:Sora,sans-serif;font-weight:700;font-size:.95rem;white-space:nowrap}
+.menu{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.menu a{padding:8px 12px;color:var(--muted);text-decoration:none;font-weight:600;font-size:.95rem;white-space:nowrap;border-bottom:2px solid transparent}
+.menu a:hover{color:var(--ink)}
+.menu a[aria-current]{color:var(--ink);border-bottom-color:var(--brass)}
+
+/* En-tête */
+.hero{background:var(--hero);color:var(--hero-ink);padding:80px 0 72px}
+.rule{width:56px;height:3px;background:var(--brass);margin-bottom:24px}
+.hero h1{font-size:clamp(2rem,6.2vw,3.7rem);font-weight:700;letter-spacing:-.01em;max-width:16ch}
+.hero .sub{margin:22px 0 0;font-size:clamp(1.05rem,2.4vw,1.3rem);max-width:34ch;opacity:.92}
+.hero .place{margin:6px 0 0;opacity:.7}
+
+/* Sections */
+section{padding:64px 0}
+.js main section{display:none}
+.js main section.on{display:block}
+.hero.off{display:none}
+main{min-height:60vh}
+h2{font-size:clamp(1.5rem,3.4vw,2rem);margin-bottom:16px}
+h3{font-size:1.05rem;margin-bottom:6px}
+.lead{max-width:62ch;color:var(--muted);margin:0 0 8px}
+
+/* Accueil */
+.home{display:grid;grid-template-columns:minmax(0,290px) minmax(0,1fr);gap:44px;align-items:start}
+.photo{aspect-ratio:4/5;border:2px dashed var(--line);border-radius:14px;background:var(--soft);display:grid;place-content:center;justify-items:center;gap:10px;text-align:center;color:var(--muted);padding:20px}
+.photo svg{width:56px;height:56px}
+.home p{max-width:60ch;margin:0 0 14px}
+.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:30px}
+.links a{display:block;padding:18px;background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--brass);border-radius:8px;color:inherit;text-decoration:none}
+.links a:hover{border-color:var(--accent)}
+.links a span{color:var(--muted);font-size:.97rem;line-height:1.5;display:block}
+.hint{font-weight:600;margin:28px 0 0!important}
+
+/* Blocs à compléter */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:28px}
+.box{padding:20px;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.box.todo{border-style:dashed;background:transparent}
+.box p{margin:8px 0 0;color:var(--muted);font-size:.98rem}
+.badge{display:inline-block;margin-top:10px;padding:2px 10px;border-radius:99px;background:var(--soft);color:var(--muted);font-size:.85rem;font-weight:600}
+
+/* Projets */
+.split{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;margin-top:8px}
+.split h3{font-size:1.25rem;margin-bottom:12px}
+.steps{list-style:none;margin:20px 0 0;padding:0 0 0 22px;border-left:2px solid var(--line)}
+.steps li{position:relative;margin-bottom:20px;padding-left:6px}
+.steps li::before{content:"";position:absolute;left:-30px;top:8px;width:12px;height:12px;border-radius:50%;background:var(--brass);border:2px solid var(--bg)}
+.steps strong{display:block}
+.steps span{color:var(--muted);font-size:.98rem}
+
+footer{background:var(--hero);color:var(--hero-ink);padding:28px 0;font-size:.95rem}
+footer p{margin:0;opacity:.8}
+
+@media (max-width:760px){
+  .home{grid-template-columns:1fr;gap:28px}
+  .photo{max-width:260px}
+  .brand{display:none}
+  nav .wrap{justify-content:flex-start}
+  section{padding:48px 0}
+  .hero{padding:56px 0 52px}
+}
+</style>
+<script>document.documentElement.className+=' js';</script>
+</head>
+<body>
+
+<nav aria-label="Rubriques">
+  <div class="wrap">
+    <a class="brand" href="#accueil">Ragragui Elias</a>
+    <div class="menu">
+      <a href="#accueil">Accueil</a>
+      <a href="#bachelor">BUT GEA</a>
+      <a href="#competences">Compétences</a>
+      <a href="#projets">Projets</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="rule"></div>
+    <h1>E-portfolio de Ragragui Elias</h1>
+    <p class="sub">BUT Gestion des Entreprises et des Administrations (GEA)</p>
+    <p class="place">Draguignan, première année</p>
+  </div>
+</header>
+
+<main>
+  <section id="accueil">
+    <div class="wrap">
+      <div class="home">
+        <div class="photo" role="img" aria-label="Emplacement réservé pour ma photo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+          <span>Emplacement de ma photo</span>
+        </div>
+        <div>
+          <h2>Bienvenue dans mon e-portfolio</h2>
+          <p>Bonjour et merci de votre visite. Je m’appelle Elias Ragragui et je suis étudiant en première année de BUT GEA à Draguignan.</p>
+          <p>Cet e-portfolio rassemble mon parcours universitaire, mes compétences et mes projets. Vous y trouverez aussi mon objectif professionnel : devenir gestionnaire de patrimoine.</p>
+          <p class="hint">Pour aller directement à une rubrique :</p>
+          <div class="links">
+            <a href="#bachelor"><h3>BUT GEA</h3><span>Ma formation, les matières et les expériences vécues.</span></a>
+            <a href="#competences"><h3>Compétences</h3><span>Ce que je sais faire, avec des exemples concrets.</span></a>
+            <a href="#projets"><h3>Projets</h3><span>Mon projet professionnel et mes projets personnels.</span></a>
+            <a href="#contact"><h3>Contact</h3><span>Mes coordonnées pour échanger avec moi.</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="bachelor">
+    <div class="wrap">
+      <h2>BUT GEA</h2>
+      <p class="lead">Le BUT Gestion des Entreprises et des Administrations est une formation en trois ans qui prépare aux métiers de la gestion, de la comptabilité, de la finance et du management. Je suis en première année au département GEA de Draguignan.</p>
+      <div class="grid">
+        <div class="box todo"><h3>Ma formation</h3><p>Présentation du programme et de mon rythme d’études.</p><span class="badge">À compléter</span></div>
+        <div class="box todo"><h3>Matières et semestres</h3><p>Les enseignements suivis, semestre après semestre.</p><span class="badge">À compléter</span></div>
+        <div class="box todo"><h3>Expériences et projets de formation</h3><p>Mises en situation, travaux de groupe, stages.</p><span class="badge">À compléter</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="competences">
+    <div class="wrap">
+      <h2>Compétences</h2>
+      <p class="lead">Chaque compétence sera illustrée par un exemple tiré de mes cours ou de mes projets.</p>
+      <div class="grid">
+        <div class="box todo"><h3>Compétence 1</h3><p>Description et exemple concret.</p><span class="badge">À compléter</span></div>
+        <div class="box todo"><h3>Compétence 2</h3><p>Description et exemple concret.</p><span class="badge">À compléter</span></div>
+        <div class="box todo"><h3>Compétence 3</h3><p>Description et exemple concret.</p><span class="badge">À compléter</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projets">
+    <div class="wrap">
+      <h2>Projets professionnel et personnel</h2>
+      <div class="split">
+        <div>
+          <h3>Projet professionnel : gestionnaire de patrimoine</h3>
+          <p>Le gestionnaire de patrimoine conseille des particuliers ou des chefs d’entreprise pour organiser, faire fructifier et transmettre leurs biens : épargne, placements, immobilier, fiscalité, retraite, succession. Ce métier associe rigueur, culture financière et relation de conseil, ce qui correspond à ce que je veux construire.</p>
+          <ol class="steps">
+            <li><strong>BUT GEA</strong><span>Formation en cours, avec des bases solides en gestion, comptabilité et finance.</span></li>
+            <li><strong>Poursuite d’études</strong><span>Licence puis master en gestion de patrimoine, finance ou banque (à préciser).</span></li>
+            <li><strong>Premières expériences</strong><span>Stages ou alternance en banque, assurance ou cabinet de gestion de patrimoine.</span></li>
+            <li><strong>Gestionnaire de patrimoine</strong><span>Objectif final de mon parcours.</span></li>
+          </ol>
+        </div>
+        <div>
+          <h3>Projets personnels</h3>
+          <div class="grid" style="margin-top:0;grid-template-columns:1fr">
+            <div class="box todo"><h3>Projet personnel 1</h3><p>Ce que c’est, pourquoi je l’ai lancé, ce que j’en retiens.</p><span class="badge">À compléter</span></div>
+            <div class="box todo"><h3>Projet personnel 2</h3><p>Ce que c’est, pourquoi je l’ai lancé, ce que j’en retiens.</p><span class="badge">À compléter</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <p class="lead">Mes coordonnées seront ajoutées ici.</p>
+      <div class="grid">
+        <div class="box todo"><h3>E-mail</h3><span class="badge">À ajouter</span></div>
+        <div class="box todo"><h3>LinkedIn</h3><span class="badge">À ajouter</span></div>
+        <div class="box"><h3>Localisation</h3><p>Draguignan, Var</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><p>E-portfolio de Ragragui Elias, BUT GEA Draguignan</p></div>
+</footer>
+
+<script>
+(function(){
+  var secs=[].slice.call(document.querySelectorAll('main section'));
+  var links=[].slice.call(document.querySelectorAll('.menu a'));
+  var hero=document.querySelector('.hero');
+  var titles={accueil:'Accueil',bachelor:'BUT GEA',competences:'Compétences',projets:'Projets',contact:'Contact'};
+  var base='E-portfolio de Ragragui Elias';
+  function show(){
+    var id=(location.hash||'').replace('#','');
+    if(!titles[id]) id='accueil';
+    secs.forEach(function(s){s.classList.toggle('on',s.id===id);});
+    links.forEach(function(l){
+      if(l.getAttribute('href')==='#'+id) l.setAttribute('aria-current','page');
+      else l.removeAttribute('aria-current');
+    });
+    hero.classList.toggle('off',id!=='accueil');
+    document.title=id==='accueil'?base:titles[id]+' - '+base;
+  }
+  window.addEventListener('hashchange',function(){show();window.scrollTo(0,0);});
+  show();
+})();
+</script>
+</body>
+</html>
